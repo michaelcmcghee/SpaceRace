@@ -220,7 +220,7 @@
     <option_freeze>false</option_freeze>
     <option_frequency>0</option_frequency>
     <option_frontimage>nil</option_frontimage>
-    <option_fullscreen>False</option_fullscreen>
+    <option_fullscreen>True</option_fullscreen>
     <option_gameguid>{8AD2BE0F-E591-4F1C-97D9-B523AB64170C}</option_gameguid>
     <option_gameid>275965512</option_gameid>
     <option_haptic_effects>0</option_haptic_effects>
@@ -651,12 +651,14 @@
     <option_xbone_title_id></option_xbone_title_id>
   </Options>
   <ConfigConstants>
-    <constants number="5">
+    <constants number="7">
       <constant name="LASER">0</constant>
       <constant name="ENEMY_SPAWNER">0</constant>
       <constant name="POWERUP_SPAWNER">1</constant>
       <constant name="LASER_POWERUP">1</constant>
       <constant name="SCREENSHAKE">0</constant>
+      <constant name="BOMB_COST">0</constant>
+      <constant name="FOCUS">2</constant>
     </constants>
   </ConfigConstants>
 </Config>

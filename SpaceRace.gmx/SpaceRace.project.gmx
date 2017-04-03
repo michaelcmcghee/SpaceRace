@@ -35,6 +35,9 @@
       <sprite>sprites\s_flare</sprite>
       <sprite>sprites\s_explosion_center</sprite>
       <sprite>sprites\s_smoke</sprite>
+      <sprite>sprites\s_flame</sprite>
+      <sprite>sprites\s_dialog_face</sprite>
+      <sprite>sprites\s_dialog_box</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -59,10 +62,8 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\f_score</font>
-    <font>fonts\font1</font>
   </fonts>
   <objects name="objects">
-    <object>objects\o_game</object>
     <objects name="Hero">
       <object>objects\o_ship</object>
       <object>objects\o_laser</object>
@@ -75,6 +76,7 @@
       <object>objects\o_enemy_laser</object>
       <object>objects\o_enemy_one</object>
       <object>objects\o_enemy_two</object>
+      <object>objects\o_enemy_three</object>
       <object>objects\o_enemy_spawner</object>
       <object>objects\o_enemy_parent</object>
     </objects>
@@ -87,6 +89,7 @@
       <object>objects\o_quit_button</object>
       <object>objects\o_button_parent</object>
       <object>objects\o_menu_button</object>
+      <object>objects\o_game</object>
     </objects>
     <objects name="Other">
       <object>objects\obj_input</object>
@@ -94,11 +97,15 @@
       <object>objects\o_view_controller</object>
       <object>objects\o_screen_flash</object>
       <object>objects\o_flare</object>
+      <object>objects\o_dialog</object>
+      <object>objects\o_speaker</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_menu</room>
     <room>rooms\r_space</room>
+    <room>rooms\r_space_chat</room>
+    <room>rooms\r_ship</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

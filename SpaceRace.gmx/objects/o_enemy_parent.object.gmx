@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///control the enemy
 if(y &gt; room_height+16){
-    instance_destroy(); 
+    instance_destroy();
 }
 
 //enemy dies died

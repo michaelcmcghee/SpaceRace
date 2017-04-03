@@ -27,10 +27,38 @@
             <kind>1</kind>
             <string>///init ship
 
-//lasers
+//stuff
 alarm[LASER] = 1;
 armor = 4;
 laser_powerup = false;
+focus = false;
+butttime = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///deactivate focus
+room_speed = 60;
+//audio_play_sound(a_hit, 9, 0);
+focus = false;
 </string>
           </argument>
         </arguments>
@@ -79,11 +107,11 @@ laser_powerup = false;
           <argument>
             <kind>1</kind>
             <string>///create the lasers
-instance_create(x+12, y-8, o_laser);
-instance_create(x-12, y-8, o_laser);
 
-//reset the alarm
-alarm[LASER] = room_speed/6;
+
+    //reset the alarm
+    alarm[LASER] = room_speed/6;
+
 
 //create the powerup lasers
 if(laser_powerup == true){
@@ -93,6 +121,7 @@ if(laser_powerup == true){
     laser = instance_create(x-12, y, o_laser);
     laser.hspeed = -.5
 }
+
 </string>
           </argument>
         </arguments>
@@ -118,35 +147,46 @@ if(laser_powerup == true){
             <string>get_input();
 ///move the ship
 
-//x = clamp(obj_input.xaxis, 16, room_width-16);
-if(x &lt;= 16 || x &gt;= room_width-16){
-    x = clamp(x, 16, room_width-16);  
+if(score == 300){
+    //room_goto(r_space_chat);
 }
+
+//x = clamp(obj_input.xaxis, 16, room_width-16);
+if(x &lt;= 32 || x &gt;= room_width-32){
+    x = clamp(x, 32, room_width-32);  
+}
+
+if(y &lt;= 32 || y &gt;= room_height-32){
+    y = clamp(y, 32, room_height-32);  
+}
+
 
 if(obj_input.start_slow){
-    room_speed = room_speed / 5; 
+        focus = true;
+        show_debug_message('focus true');
 }else if(obj_input.end_slow){
-    room_speed = 60; 
+    room_speed = 60;
+    focus = false;
 }else{
     x += obj_input.xaxis*5.5;
+    y += obj_input.yaxis*5.5;
+    focus=false;
 }
 
+if(focus == true){
+ show_debug_message('slowing room!');
+//enable focus power - slow room speed
+    room_speed = room_speed / 5;
+    alarm[FOCUS] = room_speed*5;
+}
 
-
-
-/*if(obj_input.start_slow){
-    x += obj_input.xaxis;
-    clamp(x, 16, room_width-16);
-    audio_play_sound(a_hit, 9, 0);
-}else if(obj_input.end_slow){
-    x += obj_input.xaxis;
-    clamp(x, 16, room_width-16);
-    audio_play_sound(a_hit, 9, 0);
-}else{
-    x += obj_input.xaxis*2.5;
-    clamp(x, 16, room_width-16);
-}*/
-
+//fire laser
+if(obj_input.attack_key){
+    instance_create(x+12, y-8, o_laser);
+    instance_create(x-12, y-8, o_laser);
+    
+    //alarm[LASER] = room_speed*5;
+}
 
 
 

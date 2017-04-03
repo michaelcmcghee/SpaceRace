@@ -90,6 +90,7 @@ if(x &gt;= room_width-16){
 if(x &lt; 16){
     hspeed = 1;
 }
+
 </string>
           </argument>
         </arguments>

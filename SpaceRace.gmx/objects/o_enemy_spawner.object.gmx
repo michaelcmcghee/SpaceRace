@@ -90,22 +90,31 @@ alarm[POWERUP_SPAWNER] = random_range(room_speed*10, room_speed*15);
     
     //increase the difficulty - 50% chance of enemy 2
     if(score &gt;= 200){ 
-        var enemy = choose(o_enemy_one, o_enemy_two);
+        var enemy = choose(o_enemy_one, o_enemy_two, o_enemy_three);
         //as the score increases zerg rush
-        alarm_time = random_range(room_speed*.25, room_speed);
+        alarm_time = random_range(room_speed*.20, room_speed*1.5);
     }
     
     //increase the difficulty - 50% chance of enemy 2
-    if(score &gt;= 500){ 
-        var enemy = choose(o_enemy_two, o_enemy_two, o_enemy_one);
+    if(score &gt;= 300){ 
+        var enemy = choose(o_enemy_one, o_enemy_three);
         //as the score increases zerg rush
-         alarm_time = o_score.score/10;
+        alarm_time = random_range(room_speed*.25, room_speed*1.5);
+    }    
+    
+    //increase the difficulty - 50% chance of enemy 2
+    if(score &gt;= 500){ 
+        var enemy = choose(o_enemy_two, o_enemy_two, o_enemy_one, o_enemy_three);
+        //as the score increases zerg rush (impossible but only 5 enemies on screen)
+        alarm_time = random_range(room_speed*.25, room_speed*.125);
     }
     
     
     //create the enemy
-    instance_create(random_range(16, room_width-16), -16, enemy);
+    instance_create(random_range(16, room_width-16), -16, enemy);         
     alarm[ENEMY_SPAWNER] = alarm_time;
+    
+
 </string>
           </argument>
         </arguments>
