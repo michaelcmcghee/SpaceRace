@@ -30,6 +30,7 @@
 //stuff
 alarm[LASER] = 1;
 armor = 4;
+hold_fire = false;
 laser_powerup = false;
 focus = false;
 butttime = 0;
@@ -107,20 +108,21 @@ laser_powerup = false;
           <argument>
             <kind>1</kind>
             <string>///create the lasers
-
-
-    //reset the alarm
-    alarm[LASER] = room_speed/6;
-
+    if(hold_fire == true){
+        instance_create(x+12, y-8, o_laser);
+        instance_create(x-12, y-8, o_laser);
+        //reset the alarm
+        alarm[LASER] = room_speed/6;   
+    }
 
 //create the powerup lasers
-if(laser_powerup == true){
-    var laser;
-    laser = instance_create(x+12, y, o_laser);
-    laser.hspeed = .5;
-    laser = instance_create(x-12, y, o_laser);
-    laser.hspeed = -.5
-}
+    if(laser_powerup == true){
+        var laser;
+        laser = instance_create(x+12, y, o_laser);
+        laser.hspeed = .5;
+        laser = instance_create(x-12, y, o_laser);
+        laser.hspeed = -.5
+    }
 
 </string>
           </argument>
@@ -145,13 +147,24 @@ if(laser_powerup == true){
           <argument>
             <kind>1</kind>
             <string>get_input();
-///move the ship
+///the ship
 
-if(score == 300){
-    //room_goto(r_space_chat);
+
+//fire the lasers
+if(obj_input.attack_pressed){
+    hold_fire = true;
+}else if(obj_input.attack_released){
+    hold_fire = false;
 }
 
-//x = clamp(obj_input.xaxis, 16, room_width-16);
+if(hold_fire == false){
+    alarm[LASER] = room_speed/6;
+}
+    
+
+
+
+//keep yourself from going out of the bounds of the sides
 if(x &lt;= 32 || x &gt;= room_width-32){
     x = clamp(x, 32, room_width-32);  
 }
@@ -161,9 +174,9 @@ if(y &lt;= 32 || y &gt;= room_height-32){
 }
 
 
+//Focus! - Hold RB and focus triggers for 8 seconds
 if(obj_input.start_slow){
-        focus = true;
-        show_debug_message('focus true');
+    focus = true;
 }else if(obj_input.end_slow){
     room_speed = 60;
     focus = false;
@@ -174,20 +187,10 @@ if(obj_input.start_slow){
 }
 
 if(focus == true){
- show_debug_message('slowing room!');
-//enable focus power - slow room speed
+    //enable focus power - slow room speed
     room_speed = room_speed / 5;
     alarm[FOCUS] = room_speed*5;
 }
-
-//fire laser
-if(obj_input.attack_key){
-    instance_create(x+12, y-8, o_laser);
-    instance_create(x-12, y-8, o_laser);
-    
-    //alarm[LASER] = room_speed*5;
-}
-
 
 
 
@@ -196,8 +199,11 @@ if(armor &lt;=0){
     create_explosion(x,y);
     instance_destroy();
     
+    //gamepad_set_vibration(0, 1, 1);  https://docs.yoyogames.com/source/dadiospice/002_reference/mouse,%20keyboard%20and%20other%20controls/gamepad%20input/gamepad_set_vibration.html
+    room_goto(r_space_chat);
+    
     //create menu button
-    instance_create(room_width/2, room_height/2, o_menu_button);
+    //instance_create(room_width/2, room_height/2, o_menu_button);
 }
 </string>
           </argument>

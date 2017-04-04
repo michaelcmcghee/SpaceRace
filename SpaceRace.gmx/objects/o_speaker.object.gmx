@@ -53,7 +53,8 @@ if(instance_exists(o_game)){
     }
 }*/
 
-
+//latest code from the ships death step event
+instance_create(room_width/2, room_height/2, o_menu_button);
 
 dialog = noone;
 dialog_page = 0;

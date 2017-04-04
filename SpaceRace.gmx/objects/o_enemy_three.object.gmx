@@ -55,7 +55,7 @@ alarm[LASER] = 1;
           <argument>
             <kind>1</kind>
             <string>///fire the laser
-instance_create(x, y+8, o_enemy_laser);
+instance_create(x, y+8, o_enemy_laser2);
 alarm[LASER] = room_speed/1.5;
 </string>
           </argument>
@@ -104,11 +104,13 @@ if(y &lt; 16){
 if(instance_number(o_enemy_laser) &lt;= 16){
     for (i=0; i&lt;=360; i+=30) //i=0 is the starting value, i&lt;=is the ending value, i+=30 is by how much is the value increased every repeat
     {
-    bullet=instance_create(x,y,o_enemy_laser); //create the bullet object and assign "bullet" variable to it
-    bullet.direction = i; //set the bullet's direction to be equal to i variable
-    bullet.speed = 10; //speed of the bullet
+        bullet=instance_create(x,y,o_enemy_laser); //create the bullet object and assign "bullet" variable to it
+        bullet.direction = i; //set the bullet's direction to be equal to i variable
+        bullet.speed = 9; //speed of the bullet
     }
 }
+
+
 </string>
           </argument>
         </arguments>

@@ -60,6 +60,7 @@ instance_create(0,0,o_screen_flash);
 add_screenshake(4, room_speed *.125);   
 instance_create(x,y,o_flare);
 audio_play_sound(a_ship_hit, 5, false);
+//gamepad_set_vibration(0, 0.3, 0.3);
 </string>
           </argument>
         </arguments>

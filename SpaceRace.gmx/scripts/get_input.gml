@@ -23,7 +23,8 @@ if(gamepad_is_connected(0)){
     gp_left = gamepad_button_check_pressed(0, gp_padl);
     gp_right = gamepad_button_check_pressed(0, gp_padr);
     dash_key = gamepad_button_check_pressed(0, gp_face1); //A button
-    attack_key = gamepad_button_check_pressed(0, gp_face3); //X button
+    attack_pressed = gamepad_button_check_pressed(0, gp_face3); //X button
+    attack_released = gamepad_button_check_released(0, gp_face3); //X button
     spell_key = gamepad_button_check_pressed(0, gp_face2); //B button
     block_key = gamepad_button_check_pressed(0, gp_face4); //Y button
     start_slow = gamepad_button_check_pressed(0, gp_shoulderr); //Right Bumper

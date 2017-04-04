@@ -22,6 +22,7 @@
     </sprites>
     <sprites name="Enemy">
       <sprite>sprites\s_enemy_laser</sprite>
+      <sprite>sprites\s_enemy_laser2</sprite>
       <sprite>sprites\s_enemy_two</sprite>
       <sprite>sprites\s_enemy_one</sprite>
     </sprites>
@@ -74,9 +75,11 @@
     </objects>
     <objects name="Enemy">
       <object>objects\o_enemy_laser</object>
+      <object>objects\o_enemy_laser2</object>
       <object>objects\o_enemy_one</object>
       <object>objects\o_enemy_two</object>
       <object>objects\o_enemy_three</object>
+      <object>objects\o_enemy_four</object>
       <object>objects\o_enemy_spawner</object>
       <object>objects\o_enemy_parent</object>
     </objects>
